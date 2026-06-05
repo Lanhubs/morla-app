@@ -6,29 +6,54 @@ on:
 jobs:
   build-ios:
     name: 🎉 iOS Build
-    runs-on: macos-latest
+    runs-on: macos-14 # Specifically use macOS 14 for stable Xcode 15/16 toolchains
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      # 1. Clean out the hardcoded selection to let the image handle the default toolchain
+      # Or explicitly target Xcode 15.4 / 16.0 if available on the image
+      - name: Set up Xcode Version
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer || sudo xcode-select -s /Applications/Xcode_16.app/Contents/Developer
 
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           architecture: x64
-      - run: flutter pub get
-      
+          cache: true
+          
+      - name: Get Flutter Packages
+        run: flutter pub get
 
-      - run: pod repo update
+      # 2. Force Flutter to generate the basic iOS metadata files BEFORE running pod tools
+      - name: Pre-build iOS configuration
+        run: flutter build ios --config-only --no-codesign
+
+      # 3. Inject a Podfile fix dynamically if your Windows project doesn't have one
+      - name: Fix Podfile Deployment Target
+        run: |
+          if [ ! -f ios/Podfile ]; then
+            echo "Podfile missing, generating default template..."
+            cd ios && pod init && cd ..
+          fi
+          # Force the deployment target in the Podfile to match the SDK expectations
+          sed -i '' "s/# platform :ios, '9.0'/platform :ios, '15.0'/g" ios/Podfile
+          sed -i '' "s/platform :ios, '11.0'/platform :ios, '15.0'/g" ios/Podfile
+          sed -i '' "s/platform :ios, '12.0'/platform :ios, '15.0'/g" ios/Podfile
+
+      - name: Update CocoaPods Repo
+        run: pod repo update
         working-directory: ios
 
-      - run: flutter build ios --release --no-codesign
+      - name: Build iOS Application
+        run: flutter build ios --release --no-codesign
 
-      - run: mkdir Payload
+      - name: Structure Payload for Sideloading
+        run: |
+          mkdir -p Payload
+          mv Runner.app/ Payload/
         working-directory: build/ios/iphoneos
 
-      - run: mv Runner.app/ Payload
-        working-directory: build/ios/iphoneos
-
-      - name: Zip output
+      - name: Zip output to Fake IPA
         run: zip -qq -r -9 FlutterIpaExport.ipa Payload
         working-directory: build/ios/iphoneos
 
