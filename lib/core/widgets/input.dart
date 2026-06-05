@@ -11,6 +11,7 @@ class Input extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? prefixText;
   final String? suffixText;
+  final Widget? suffixIcon;
   final TextStyle? prefixStyle;
   final TextStyle? suffixStyle;
   final TextAlign? textAlign;
@@ -30,6 +31,7 @@ class Input extends StatelessWidget {
     this.controller,
     this.obscureText,
     this.suffixText,
+    this.suffixIcon,
     this.prefixText,
     this.prefixStyle,
     this.suffixStyle,
@@ -91,6 +93,7 @@ class Input extends StatelessWidget {
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
                     suffixText: suffixText,
+                    suffixIcon: suffixIcon,
                     suffixStyle:
                         suffixStyle ??
                         GoogleFonts.jetBrainsMono(

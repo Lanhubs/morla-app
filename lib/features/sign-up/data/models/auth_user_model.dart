@@ -5,6 +5,10 @@ class AuthUserModel {
   final String? phone;
   final String? planTier;
   final String? emailVerifiedAt;
+  final String? businessName;
+  final String? websiteUrl;
+  final String? signatureUrl;
+  final String? avatarUrl;
 
   const AuthUserModel({
     required this.id,
@@ -13,6 +17,10 @@ class AuthUserModel {
     this.phone,
     this.planTier,
     this.emailVerifiedAt,
+    this.businessName,
+    this.websiteUrl,
+    this.signatureUrl,
+    this.avatarUrl,
   });
 
   factory AuthUserModel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +31,10 @@ class AuthUserModel {
       phone: json['phone'] as String?,
       planTier: json['planTier'] as String?,
       emailVerifiedAt: json['emailVerifiedAt'] as String?,
+      businessName: json['businessName'] as String?,
+      websiteUrl: json['websiteUrl'] as String?,
+      signatureUrl: json['signatureUrl'] as String?,
+      avatarUrl: json['avatarUrl'] as String?,
     );
   }
 
@@ -34,6 +46,10 @@ class AuthUserModel {
       'phone': phone,
       'planTier': planTier,
       'emailVerifiedAt': emailVerifiedAt,
+      'businessName': businessName,
+      'websiteUrl': websiteUrl,
+      'signatureUrl': signatureUrl,
+      'avatarUrl': avatarUrl,
     };
   }
 }

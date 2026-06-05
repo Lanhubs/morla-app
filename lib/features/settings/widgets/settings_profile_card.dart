@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:morla/core/controllers/current_user_controller.dart';
 import 'package:morla/core/theme/app_colors.dart';
 import 'package:morla/features/settings/widgets/settings_glass_panel.dart';
+import 'package:morla/routes/app_routes.dart';
 
 class SettingsProfileCard extends StatelessWidget {
   const SettingsProfileCard({super.key});
@@ -106,7 +107,7 @@ class SettingsProfileCard extends StatelessWidget {
                 ],
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () =>Get.toNamed(AppRoutes.profileEdit),
                 icon: const Icon(Icons.edit_note, color: AppColors.primaryBlue),
               ),
             ],

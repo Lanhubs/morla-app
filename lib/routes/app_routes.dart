@@ -17,4 +17,5 @@ class AppRoutes {
   static const String forgotPasswordReset = '/forgot-password/reset';
   static const String paymentSetup = '/paymentSetup';
   static const String settlementMethods = '/settlementMethods';
+  static const String profileEdit = '/profileEdit';
 }

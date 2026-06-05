@@ -20,7 +20,8 @@ class NavItem extends StatelessWidget {
       onTap: onTap,
       child: SizedBox(
         child: Column(
-         
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (icon is IconData)
               Icon(
@@ -41,7 +42,7 @@ class NavItem extends StatelessWidget {
                 color: isActive ? Color(0xFF3B82F6) : Colors.white,
               ),
             ),
-            SizedBox(height: 4.0,),
+            SizedBox(height: 6.0,),
             isActive?
             Container(
               width: 4,

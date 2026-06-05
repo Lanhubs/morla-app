@@ -15,7 +15,7 @@ class HomeView extends GetView<HomeController> {
       body: LiquidGlassView(
         backgroundWidget: Obx(() => controller.tabs[controller.currentIndex.value]),
         children: [
-          buildLiquidGlassBottomBar(controller),
+          buildLiquidGlassBottomBar(context, controller),
         ],
       ),
     );

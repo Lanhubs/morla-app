@@ -4,6 +4,7 @@ import 'package:morla/features/new_invoice/views/new_invoice_view.dart';
 import 'package:morla/features/new_invoice/bindings/new_invoice_binding.dart';
 import 'package:morla/features/payment-setup/binding/payment_setup_binding.dart';
 import 'package:morla/features/payment-setup/view/payment_setup_view.dart';
+import 'package:morla/features/settings/views/profile_edit_view.dart';
 import 'package:morla/features/settlement_methods/view/settlement_methods_view.dart';
 import 'package:morla/routes/app_routes.dart';
 import 'imports.dart';
@@ -90,6 +91,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.settlementMethods,
       page: () => SettlementMethodsPage(),
+    ),
+    GetPage(
+      name: AppRoutes.profileEdit,
+      page: () => ProfileEditView(),
     ),
   ];
 }

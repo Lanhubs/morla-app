@@ -64,6 +64,21 @@ class SignUpRepository {
     }
   }
 
+  Future<Map<String, dynamic>> updateProfile(Map<String, dynamic> data) async {
+    try {
+      final response = await _apiClient.dio.patch('/auth/me', data: data);
+
+      final responseData = response.data;
+      if (responseData is! Map<String, dynamic>) {
+        throw Exception('Invalid server response');
+      }
+
+      return responseData;
+    } on DioException catch (error) {
+      throw Exception(_extractErrorMessage(error));
+    }
+  }
+
   String _extractErrorMessage(DioException error) {
     final data = error.response?.data;
 
