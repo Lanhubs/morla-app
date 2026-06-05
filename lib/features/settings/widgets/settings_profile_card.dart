@@ -112,6 +112,7 @@ class SettingsProfileCard extends StatelessWidget {
               ),
             ],
           ),
+          
         ),
       );
     });
