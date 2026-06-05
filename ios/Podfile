@@ -1,15 +1,18 @@
-# Set the platform to iOS 15.0
+# 1. This block tells CocoaPods where to find Flutter's custom Ruby methods
+python_path = File.expand_file_path('..', __dir__)
+flutter_root = File.expand_path(File.join('..', '..'), __dir__)
+
+require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper.rb'), ENV['FLUTTER_ROOT'] || flutter_root)
+
 platform :ios, '15.0'
 
-# CocoaPods analytics
 plugin 'cocoapods-disable-podfile-validations'
 
-# Flutter setup
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
-  # This pulls in all your flutter pubspec packages automatically
+  # 2. This will now run successfully because of the 'require' statement above
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
@@ -17,7 +20,6 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
     
-    # Force every native plugin dependency to compile for iOS 15.0
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
     end
