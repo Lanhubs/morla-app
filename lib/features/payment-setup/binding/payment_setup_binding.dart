@@ -1,0 +1,12 @@
+import 'package:get/get.dart';
+import 'package:morla/features/payment-setup/controllers/payment_setup_controller.dart';
+
+import 'package:morla/features/settlement_methods/data/repositories/payout_methods_repository.dart';
+
+class PaymentSetupBindings extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut<PayoutMethodsRepository>(() => PayoutMethodsRepository());
+    Get.lazyPut(() => PaymentSetupController());
+  }
+}
