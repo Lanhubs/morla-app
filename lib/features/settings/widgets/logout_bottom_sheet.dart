@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:morla/core/theme/app_colors.dart';
 import 'package:morla/core/widgets/cta_button.dart';
+import 'package:get/get.dart';
 
 class LogoutBottomSheet extends StatelessWidget {
   final VoidCallback onConfirmLogout;
@@ -81,7 +82,7 @@ class LogoutBottomSheet extends StatelessWidget {
               Expanded(
                 child: CtaButton(
                   text: 'Cancel',
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () => Get.back(),
                   type: CtaButtonType.outlined,
                 ),
               ),
@@ -91,7 +92,7 @@ class LogoutBottomSheet extends StatelessWidget {
                 child: CtaButton(
                   text: 'Log Out',
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Get.back();
                     onConfirmLogout();
                   },
                   type: CtaButtonType.danger,

@@ -41,7 +41,30 @@ class InvoiceInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildFieldLabel(label, isRequired: isRequired),
+        Row(
+          children: [
+            Text(
+              label,
+              style: GoogleFonts.plusJakartaSans(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+                letterSpacing: 0.3,
+              ),
+            ),
+            if (isRequired) ...[
+              const SizedBox(width: 4),
+              const Text(
+                '*',
+                style: TextStyle(
+                  color: AppColors.alertRed,
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ],
+        ),
         const SizedBox(height: 8),
         TextFormField(
           controller: controller,
@@ -119,33 +142,6 @@ class InvoiceInput extends StatelessWidget {
             ),
           ),
         ),
-      ],
-    );
-  }
-
-  Widget _buildFieldLabel(String label, {required bool isRequired}) {
-    return Row(
-      children: [
-        Text(
-          label,
-          style: GoogleFonts.plusJakartaSans(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-            letterSpacing: 0.3,
-          ),
-        ),
-        if (isRequired) ...[
-          const SizedBox(width: 4),
-          const Text(
-            '*',
-            style: TextStyle(
-              color: AppColors.alertRed,
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
       ],
     );
   }

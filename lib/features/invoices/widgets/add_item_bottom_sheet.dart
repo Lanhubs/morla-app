@@ -6,6 +6,7 @@ import 'package:morla/core/theme/app_colors.dart';
 import 'package:morla/core/widgets/cta_button.dart';
 import 'package:morla/features/invoices/controllers/invoices_controller.dart';
 import 'add_item_form.dart';
+import 'action_btns.dart';
 
 class AddItemBottomSheet extends StatefulWidget {
   final InvoicesController controller;
@@ -73,7 +74,7 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet>
     super.dispose();
   }
 
-  Future<void> _handleAddItem(BuildContext context) async {
+  Future<void> _handleAddItem() async {
     if (!_formKey.currentState!.validate()) return;
 
     setState(() => _isProcessing = true);
@@ -89,7 +90,7 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet>
     widget.controller.addItem(desc, qty, price, tax);
 
     if (context.mounted) {
-      Navigator.of(context).pop();
+      Get.back();
     }
   }
 
@@ -100,7 +101,7 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet>
       child: SlideTransition(
         position: _slideAnimation,
         child: Container(
-          height: Get.height*0.57,
+          height: Get.height * 0.57,
           padding: EdgeInsets.only(
             left: 24,
             right: 24,
@@ -127,11 +128,66 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildHeader(),
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: AppColors.primaryBlue.withValues(
+                                alpha: 0.15,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const HugeIcon(
+                              icon: HugeIcons.strokeRoundedPackage,
+                              color: AppColors.primaryBlue,
+                              size: 24,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Add Invoice Item',
+                                  style: GoogleFonts.plusJakartaSans(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    height: 1.2,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Fill in the details below',
+                                  style: GoogleFonts.plusJakartaSans(
+                                    fontSize: 13,
+                                    color: AppColors.textMutedDark,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () => Get.back(),
+                            icon: const Icon(
+                              Icons.close_rounded,
+                              color: AppColors.textMutedDark,
+                              size: 24,
+                            ),
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                          ),
+                        ],
+                      ),
                       const SizedBox(height: 24),
                       AddItemForm(controller: widget.controller),
                       const SizedBox(height: 32),
-                      _buildActionButtons(context),
+                      ActionBtns(
+                        handleAddItem: _handleAddItem,
+                        isProcessing: _isProcessing,
+                      ),
                     ],
                   ),
                 ),
@@ -140,83 +196,6 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet>
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildHeader() {
-    return Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: AppColors.primaryBlue.withValues(alpha: 0.15),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: const HugeIcon(
-            icon: HugeIcons.strokeRoundedPackage,
-            color: AppColors.primaryBlue,
-            size: 24,
-          ),
-        ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Add Invoice Item',
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  height: 1.2,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Fill in the details below',
-                style: GoogleFonts.plusJakartaSans(
-                  fontSize: 13,
-                  color: AppColors.textMutedDark,
-                ),
-              ),
-            ],
-          ),
-        ),
-        IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: const Icon(
-            Icons.close_rounded,
-            color: AppColors.textMutedDark,
-            size: 24,
-          ),
-          padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildActionButtons(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: CtaButton(
-            text: "Cancel",
-            onPressed: _isProcessing ? null : () => Navigator.of(context).pop(),
-            type: CtaButtonType.outlined,
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          flex: 2,
-          child: CtaButton(
-            text: _isProcessing ? "Adding..." : "Add Item",
-            onPressed: _isProcessing ? null : () => _handleAddItem(context),
-            type: CtaButtonType.primary,
-          ),
-        ),
-      ],
     );
   }
 }

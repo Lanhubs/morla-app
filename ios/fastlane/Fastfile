@@ -1,0 +1,166 @@
+# Fastfile for Morla iOS App
+
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    setup_ci if ENV['CI']
+  end
+
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    # Increment build number
+    increment_build_number(
+      build_number: ENV['GITHUB_RUN_NUMBER'] || latest_testflight_build_number + 1,
+      xcodeproj: "Runner.xcodeproj"
+    )
+
+    # Build the app
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: {
+          ENV["APP_BUNDLE_ID"] => ENV["PROVISIONING_PROFILE_NAME"]
+        }
+      }
+    )
+
+    # Upload to TestFlight
+    upload_to_testflight(
+      api_key_path: "AuthKey.json",
+      skip_waiting_for_build_processing: true,
+      changelog: "Bug fixes and performance improvements"
+    )
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    # Increment build number
+    increment_build_number(
+      build_number: ENV['GITHUB_RUN_NUMBER'] || latest_testflight_build_number + 1,
+      xcodeproj: "Runner.xcodeproj"
+    )
+
+    # Build the app
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: {
+          ENV["APP_BUNDLE_ID"] => ENV["PROVISIONING_PROFILE_NAME"]
+        }
+      }
+    )
+
+    # Upload to App Store
+    upload_to_app_store(
+      api_key_path: "AuthKey.json",
+      skip_metadata: false,
+      skip_screenshots: false,
+      submit_for_review: false,
+      automatic_release: false,
+      force: true
+    )
+  end
+
+  desc "Run tests"
+  lane :test do
+    run_tests(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      device: "iPhone 15 Pro",
+      clean: true
+    )
+  end
+
+  desc "Generate new screenshots for App Store"
+  lane :screenshots do
+    capture_screenshots(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      devices: [
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone SE (3rd generation)",
+        "iPad Pro (12.9-inch) (6th generation)"
+      ]
+    )
+
+    upload_to_app_store(
+      api_key_path: "AuthKey.json",
+      skip_binary_upload: true,
+      skip_metadata: true
+    )
+  end
+
+  desc "Setup certificates and profiles"
+  lane :setup do
+    match(
+      type: "appstore",
+      readonly: is_ci,
+      app_identifier: ENV["APP_BUNDLE_ID"]
+    )
+  end
+
+  desc "Refresh provisioning profiles"
+  lane :refresh_profiles do
+    match(
+      type: "appstore",
+      force_for_new_devices: true,
+      app_identifier: ENV["APP_BUNDLE_ID"]
+    )
+  end
+
+  # Error handling
+  error do |lane, exception, options|
+    if ENV['SLACK_WEBHOOK_URL']
+      slack(
+        message: "iOS Build Failed!",
+        success: false,
+        slack_url: ENV['SLACK_WEBHOOK_URL'],
+        attachment_properties: {
+          fields: [
+            {
+              title: "Lane",
+              value: lane,
+              short: true
+            },
+            {
+              title: "Error",
+              value: exception.to_s,
+              short: false
+            }
+          ]
+        }
+      )
+    end
+  end
+
+  # Post actions
+  after_all do |lane, options|
+    if ENV['SLACK_WEBHOOK_URL']
+      slack(
+        message: "iOS Build Succeeded!",
+        success: true,
+        slack_url: ENV['SLACK_WEBHOOK_URL'],
+        attachment_properties: {
+          fields: [
+            {
+              title: "Lane",
+              value: lane,
+              short: true
+            },
+            {
+              title: "Build Number",
+              value: get_build_number(xcodeproj: "Runner.xcodeproj"),
+              short: true
+            }
+          ]
+        }
+      )
+    end
+  end
+end

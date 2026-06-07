@@ -28,25 +28,39 @@ class AddItemForm extends StatelessWidget {
           },
         ),
         const SizedBox(height: 20),
-        _buildQuantityAndPriceRow(),
+        QuantityAndPriceRow(controller: controller),
         const SizedBox(height: 20),
-        _buildTaxSection(),
+        TaxSection(controller: controller),
       ],
     );
   }
+}
 
-  Widget _buildQuantityAndPriceRow() {
+class QuantityAndPriceRow extends StatelessWidget {
+  final InvoicesController controller;
+
+  const QuantityAndPriceRow({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(flex: 2, child: _buildQuantityField()),
+        Expanded(flex: 2, child: QuantityField(controller: controller)),
         const SizedBox(width: 16),
-        Expanded(flex: 3, child: _buildPriceField()),
+        Expanded(flex: 3, child: PriceField(controller: controller)),
       ],
     );
   }
+}
 
-  Widget _buildQuantityField() {
+class QuantityField extends StatelessWidget {
+  final InvoicesController controller;
+
+  const QuantityField({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
     return InvoiceInput(
       label: 'Quantity',
       controller: controller.newQtyController,
@@ -62,8 +76,15 @@ class AddItemForm extends StatelessWidget {
       },
     );
   }
+}
 
-  Widget _buildPriceField() {
+class PriceField extends StatelessWidget {
+  final InvoicesController controller;
+
+  const PriceField({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
     return InvoiceInput(
       label: 'Price',
       controller: controller.newPriceController,
@@ -84,8 +105,15 @@ class AddItemForm extends StatelessWidget {
       },
     );
   }
+}
 
-  Widget _buildTaxSection() {
+class TaxSection extends StatelessWidget {
+  final InvoicesController controller;
+
+  const TaxSection({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

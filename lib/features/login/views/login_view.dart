@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:morla/core/widgets/auth_title.dart';
 import 'package:morla/core/widgets/auth_button.dart';
 import 'package:morla/core/widgets/cta_button.dart';
@@ -47,6 +48,16 @@ class LoginView extends GetView<LoginController> {
                     : "Log in to your\naccount",
                 type: TitleType.h1,
                 color: TitleColor.light,
+              ),
+              Text(
+                Get.find<AppPrefsService>().hasLoggedInBefore
+                    ? "Continue where you left off. Everythings is secured"
+                    : "Securely access your invoices, clients and payments",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: GoogleFonts.questrial().fontFamily,
+                  color: Colors.white,
+                ),
               ),
               const SizedBox(height: 48),
               Input(

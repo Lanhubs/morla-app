@@ -93,7 +93,7 @@ class InvoiceCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 6),
-                _buildStatusBadge(invoice.status),
+                StatusBadge(status: invoice.status),
               ],
             ),
           ],
@@ -101,8 +101,15 @@ class InvoiceCard extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildStatusBadge(String status) {
+class StatusBadge extends StatelessWidget {
+  final String status;
+
+  const StatusBadge({super.key, required this.status});
+
+  @override
+  Widget build(BuildContext context) {
     Color backgroundColor;
     Color textColor;
 

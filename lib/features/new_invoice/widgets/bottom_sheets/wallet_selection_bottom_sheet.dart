@@ -8,7 +8,10 @@ class WalletSelectionBottomSheet extends StatelessWidget {
 
   const WalletSelectionBottomSheet({super.key, required this.controller});
 
-  static Future<void> show(BuildContext context, NewInvoiceController controller) {
+  static Future<void> show(
+    BuildContext context,
+    NewInvoiceController controller,
+  ) {
     controller.fetchSavedAccounts();
     return Get.bottomSheet(
       WalletSelectionBottomSheet(controller: controller),
@@ -39,7 +42,7 @@ class WalletSelectionBottomSheet extends StatelessWidget {
                     style: TextStyle(color: Color(0xFF94A3B8), fontSize: 15),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.of(context).pop(),
+                    onTap: () => Get.back(),
                     child: const Icon(
                       Icons.keyboard_arrow_up_rounded,
                       color: Color(0xFF94A3B8),
@@ -55,7 +58,9 @@ class WalletSelectionBottomSheet extends StatelessWidget {
                 return const Padding(
                   padding: EdgeInsets.symmetric(vertical: 24),
                   child: Center(
-                    child: CircularProgressIndicator(color: AppColors.primaryBlue),
+                    child: CircularProgressIndicator(
+                      color: AppColors.primaryBlue,
+                    ),
                   ),
                 );
               }
@@ -78,21 +83,29 @@ class WalletSelectionBottomSheet extends StatelessWidget {
                   itemCount: controller.savedWallets.length,
                   itemBuilder: (context, index) {
                     final wallet = controller.savedWallets[index];
-                    final isSelected = controller.selectedWallet.value == wallet;
-                    
+                    final isSelected =
+                        controller.selectedWallet.value == wallet;
+
                     return InkWell(
                       onTap: () {
                         controller.selectedWallet.value = wallet;
                         Get.back();
                       },
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                        color: isSelected ? AppColors.primaryBlue.withOpacity(0.1) : Colors.transparent,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
+                        color: isSelected
+                            ? AppColors.primaryBlue.withOpacity(0.1)
+                            : Colors.transparent,
                         child: Row(
                           children: [
                             Icon(
                               Icons.account_balance_wallet,
-                              color: isSelected ? AppColors.primaryBlue : const Color(0xFF94A3B8),
+                              color: isSelected
+                                  ? AppColors.primaryBlue
+                                  : const Color(0xFF94A3B8),
                               size: 20,
                             ),
                             const SizedBox(width: 12),
@@ -100,14 +113,20 @@ class WalletSelectionBottomSheet extends StatelessWidget {
                               child: Text(
                                 wallet,
                                 style: TextStyle(
-                                  color: isSelected ? Colors.white : const Color(0xFF94A3B8),
+                                  color: isSelected
+                                      ? Colors.white
+                                      : const Color(0xFF94A3B8),
                                   fontSize: 14,
                                 ),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
                             if (isSelected)
-                              const Icon(Icons.check, color: AppColors.primaryBlue, size: 20),
+                              const Icon(
+                                Icons.check,
+                                color: AppColors.primaryBlue,
+                                size: 20,
+                              ),
                           ],
                         ),
                       ),

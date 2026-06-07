@@ -5,6 +5,7 @@ import 'package:morla/core/theme/app_colors.dart';
 import 'package:morla/core/utils/snack_helper.dart';
 import 'package:morla/features/invoice_details/controllers/invoice_details_controller.dart';
 import 'package:morla/features/settlement_methods/data/models/payout_method_model.dart';
+import 'qr_pattern_painter.dart';
 
 class SettlementDetailsSection extends StatelessWidget {
   const SettlementDetailsSection({super.key});
@@ -29,22 +30,31 @@ class SettlementDetailsSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildSectionHeader(isCrypto),
+            SectionHeader(isCrypto: isCrypto),
             const SizedBox(height: 16),
             if (method != null)
-              isCrypto ? _buildCryptoDetails(method) : _buildBankDetails(method)
+              isCrypto
+                  ? CryptoDetails(method: method)
+                  : BankDetails(method: method)
             else
-              _buildFallbackSettlement(
-                invoice.settlementMethod,
-                invoice.settlementAsset,
+              FallbackSettlement(
+                methodType: invoice.settlementMethod,
+                asset: invoice.settlementAsset,
               ),
           ],
         ),
       );
     });
   }
+}
 
-  Widget _buildSectionHeader(bool isCrypto) {
+class SectionHeader extends StatelessWidget {
+  final bool isCrypto;
+
+  const SectionHeader({super.key, required this.isCrypto});
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
         Container(
@@ -74,8 +84,15 @@ class SettlementDetailsSection extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _buildCryptoDetails(PayoutMethodModel method) {
+class CryptoDetails extends StatelessWidget {
+  final PayoutMethodModel method;
+
+  const CryptoDetails({super.key, required this.method});
+
+  @override
+  Widget build(BuildContext context) {
     final address = method.walletAddress ?? '';
     final network = method.walletNetwork ?? '';
 
@@ -83,9 +100,9 @@ class SettlementDetailsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Network badge
-        _buildDetailRow('Network', network.toUpperCase()),
+        DetailRow(label: 'Network', value: network.toUpperCase()),
         const SizedBox(height: 12),
-        _buildDetailRow('Asset', method.label),
+        DetailRow(label: 'Asset', value: method.label),
         const SizedBox(height: 16),
 
         // Wallet address with QR
@@ -109,7 +126,7 @@ class SettlementDetailsSection extends StatelessWidget {
           child: Column(
             children: [
               // QR code placeholder using a grid pattern
-              _buildQrPlaceholder(address),
+              QrPlaceholder(data: address),
               const SizedBox(height: 12),
               Text(
                 address,
@@ -165,44 +182,69 @@ class SettlementDetailsSection extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _buildQrPlaceholder(String data) {
+class QrPlaceholder extends StatelessWidget {
+  final String data;
+
+  const QrPlaceholder({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
     // Generate a deterministic grid pattern from the address string
     final hash = data.hashCode;
     return SizedBox(
       width: 140,
       height: 140,
-      child: CustomPaint(painter: _QrPatternPainter(hash)),
+      child: CustomPaint(painter: QrPatternPainter(hash)),
     );
   }
+}
 
-  Widget _buildBankDetails(PayoutMethodModel method) {
+class BankDetails extends StatelessWidget {
+  final PayoutMethodModel method;
+
+  const BankDetails({super.key, required this.method});
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildDetailRow('Bank Name', method.bankName ?? '-'),
+        DetailRow(label: 'Bank Name', value: method.bankName ?? '-'),
         const SizedBox(height: 10),
-        _buildDetailRow('Account Name', method.accountName ?? '-'),
+        DetailRow(label: 'Account Name', value: method.accountName ?? '-'),
         const SizedBox(height: 10),
-        _buildDetailRow('Account Number', method.accountNumber ?? '-'),
+        DetailRow(label: 'Account Number', value: method.accountNumber ?? '-'),
         const SizedBox(height: 10),
         if (method.bankSwift != null && method.bankSwift!.isNotEmpty) ...[
-          _buildDetailRow('SWIFT Code', method.bankSwift!),
+          DetailRow(label: 'SWIFT Code', value: method.bankSwift!),
           const SizedBox(height: 10),
         ],
-        _buildDetailRow('Label', method.label),
+        DetailRow(label: 'Label', value: method.label),
       ],
     );
   }
+}
 
-  Widget _buildFallbackSettlement(String? methodType, String? asset) {
+class FallbackSettlement extends StatelessWidget {
+  final String? methodType;
+  final String? asset;
+
+  const FallbackSettlement({super.key, this.methodType, this.asset});
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildDetailRow('Method', methodType?.toUpperCase() ?? 'NOT SET'),
-        if (asset != null && asset.isNotEmpty) ...[
+        DetailRow(
+          label: 'Method',
+          value: methodType?.toUpperCase() ?? 'NOT SET',
+        ),
+        if (asset != null && asset!.isNotEmpty) ...[
           const SizedBox(height: 10),
-          _buildDetailRow('Asset', asset),
+          DetailRow(label: 'Asset', value: asset!),
         ],
         const SizedBox(height: 12),
         const Text(
@@ -216,8 +258,16 @@ class SettlementDetailsSection extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _buildDetailRow(String label, String value) {
+class DetailRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const DetailRow({super.key, required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -240,66 +290,4 @@ class SettlementDetailsSection extends StatelessWidget {
       ],
     );
   }
-}
-
-class _QrPatternPainter extends CustomPainter {
-  final int seed;
-  _QrPatternPainter(this.seed);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = Colors.black;
-    const gridSize = 21;
-    final cellSize = size.width / gridSize;
-
-    // Draw border
-    for (int i = 0; i < gridSize; i++) {
-      for (int j = 0; j < gridSize; j++) {
-        // Corner finder patterns (7x7 squares in 3 corners)
-        if (_isFinderPattern(i, j, gridSize)) {
-          canvas.drawRect(
-            Rect.fromLTWH(j * cellSize, i * cellSize, cellSize, cellSize),
-            paint,
-          );
-          continue;
-        }
-
-        // Pseudo-random data modules
-        final val = (seed + i * 37 + j * 13) % 3;
-        if (val == 0) {
-          canvas.drawRect(
-            Rect.fromLTWH(j * cellSize, i * cellSize, cellSize, cellSize),
-            paint,
-          );
-        }
-      }
-    }
-  }
-
-  bool _isFinderPattern(int row, int col, int size) {
-    // Top-left
-    if (row < 7 && col < 7) {
-      if (row == 0 || row == 6 || col == 0 || col == 6) return true;
-      if (row >= 2 && row <= 4 && col >= 2 && col <= 4) return true;
-      return false;
-    }
-    // Top-right
-    if (row < 7 && col >= size - 7) {
-      final c = col - (size - 7);
-      if (row == 0 || row == 6 || c == 0 || c == 6) return true;
-      if (row >= 2 && row <= 4 && c >= 2 && c <= 4) return true;
-      return false;
-    }
-    // Bottom-left
-    if (row >= size - 7 && col < 7) {
-      final r = row - (size - 7);
-      if (r == 0 || r == 6 || col == 0 || col == 6) return true;
-      if (r >= 2 && r <= 4 && col >= 2 && col <= 4) return true;
-      return false;
-    }
-    return false;
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

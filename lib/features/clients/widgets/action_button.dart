@@ -23,8 +23,8 @@ class ActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconClr = iconColor ?? AppColors.textMutedDark;
-    final bgColor = backgroundColor ?? Colors.white.withValues(alpha:0.03);
-    final brdColor = borderColor ?? Colors.white.withValues(alpha:0.05);
+    final bgColor = backgroundColor ?? Colors.white.withValues(alpha: 0.03);
+    final brdColor = borderColor ?? Colors.white.withValues(alpha: 0.05);
 
     return GestureDetector(
       onTap: onTap,
@@ -38,23 +38,17 @@ class ActionButton extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(color: brdColor),
           ),
-          child: Center(child: _buildIcon(iconClr)),
+          child: icon is IconData
+              ? Icon(icon as IconData, color: iconClr, size: 16)
+              : icon is List<List<dynamic>>
+              ? HugeIcon(
+                  icon: icon as List<List<dynamic>>,
+                  color: iconClr,
+                  size: 16,
+                )
+              : Icon(Icons.error, color: iconClr, size: 16),
         ),
       ),
     );
-  }
-
-  Widget _buildIcon(Color color) {
-    if (icon is IconData) {
-      return Icon(icon as IconData, color: color, size: 16);
-    } else if (icon is List<List<dynamic>>) {
-      return HugeIcon(
-        icon: icon as List<List<dynamic>>,
-        color: color,
-        size: 16,
-      );
-    } else {
-      return Icon(Icons.error, color: color, size: 16);
-    }
   }
 }

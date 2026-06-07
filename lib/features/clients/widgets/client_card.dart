@@ -43,7 +43,23 @@ class ClientCard extends StatelessWidget {
             Row(
               children: [
                 // Avatar
-                _buildAvatar(),
+                client.avatarUrl.isNotEmpty
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Container(
+                          width: 48,
+                          height: 48,
+                          color: const Color(0xFF1E2024),
+                          child: Image.network(
+                            client.avatarUrl,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return AvatarFallback(name: client.name);
+                            },
+                          ),
+                        ),
+                      )
+                    : AvatarFallback(name: client.name),
                 const SizedBox(width: 16),
                 // Name & Email
                 Expanded(
@@ -103,7 +119,7 @@ class ClientCard extends StatelessWidget {
                       style: GoogleFonts.jetBrainsMono(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color:  Colors.white,
+                        color: Colors.white,
                       ),
                     ),
                   ],
@@ -133,27 +149,5 @@ class ClientCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Widget _buildAvatar() {
-    if (client.avatarUrl.isNotEmpty) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
-          width: 48,
-          height: 48,
-          color: const Color(0xFF1E2024),
-          child: Image.network(
-            client.avatarUrl,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) {
-              return AvatarFallback(name: client.name);
-            },
-          ),
-        ),
-      );
-    }
-
-    return AvatarFallback(name: client.name);
   }
 }

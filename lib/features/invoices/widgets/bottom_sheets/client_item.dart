@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:morla/features/clients/data/models/client_model.dart';
 import 'package:morla/features/invoices/controllers/invoices_controller.dart';
+import 'package:get/get.dart';
 
 class ClientItem extends StatelessWidget {
   final Client client;
   final InvoicesController controller;
 
-  const ClientItem({
-    super.key,
-    required this.client,
-    required this.controller,
-  });
+  const ClientItem({super.key, required this.client, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         controller.selectClient(client.name);
-        Navigator.of(context).pop();
+        Get.back();
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),

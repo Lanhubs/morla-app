@@ -18,7 +18,7 @@ class AuthButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
         decoration: BoxDecoration(
           color: isOutlined ? Colors.transparent : AppColors.lightSurface,
           borderRadius: BorderRadius.circular(20),

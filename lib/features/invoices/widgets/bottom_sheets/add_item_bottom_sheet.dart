@@ -3,7 +3,7 @@ import 'package:morla/features/invoices/controllers/invoices_controller.dart';
 import 'add_item_action_buttons.dart';
 import 'add_item_header.dart';
 import 'package:morla/features/invoices/widgets/add_item_form.dart';
-
+import 'package:get/get.dart';
 class AddItemBottomSheet extends StatefulWidget {
   final InvoicesController controller;
 
@@ -87,7 +87,7 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet>
 
     if (context.mounted) {
       setState(() => _isProcessing = false);
-      Navigator.of(context).pop();
+      Get.back();
     }
   }
 
@@ -125,13 +125,13 @@ class _AddItemBottomSheetState extends State<AddItemBottomSheet>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AddItemHeader(onClose: () => Navigator.of(context).pop()),
+                      AddItemHeader(onClose: () => Get.back()),
                       const SizedBox(height: 24),
                       AddItemForm(controller: widget.controller),
                       const SizedBox(height: 32),
                       AddItemActionButtons(
                         isProcessing: _isProcessing,
-                        onCancel: () => Navigator.of(context).pop(),
+                        onCancel: () => Get.back(),
                         onAddItem: () => _handleAddItem(context),
                       ),
                     ],

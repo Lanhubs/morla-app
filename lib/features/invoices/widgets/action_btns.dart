@@ -1,17 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:morla/core/widgets/cta_button.dart';
 import 'package:get/get.dart';
 
 class ActionBtns extends StatelessWidget {
   final bool isProcessing;
-  final VoidCallback? onCancel;
-  final VoidCallback? onAdd;
-
+  final VoidCallback handleAddItem;
   const ActionBtns({
     super.key,
+    required this.handleAddItem,
     required this.isProcessing,
-    this.onCancel,
-    this.onAdd,
   });
 
   @override
@@ -21,7 +18,7 @@ class ActionBtns extends StatelessWidget {
         Expanded(
           child: CtaButton(
             text: "Cancel",
-            onPressed: isProcessing ? null : (onCancel ?? () => Get.back()),
+            onPressed: isProcessing ? null : () => Get.back(),
             type: CtaButtonType.outlined,
           ),
         ),
@@ -30,11 +27,12 @@ class ActionBtns extends StatelessWidget {
           flex: 2,
           child: CtaButton(
             text: isProcessing ? "Adding..." : "Add Item",
-            onPressed: isProcessing ? null : (onAdd ?? () {}),
+            onPressed: isProcessing ? null : () => handleAddItem(),
             type: CtaButtonType.primary,
           ),
         ),
       ],
     );
+    ;
   }
 }

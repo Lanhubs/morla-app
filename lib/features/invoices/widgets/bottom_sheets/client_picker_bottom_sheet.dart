@@ -41,7 +41,7 @@ class ClientPickerBottomSheet extends StatelessWidget {
                     style: TextStyle(color: Color(0xFF94A3B8), fontSize: 15),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.of(context).pop(),
+                    onTap: () => Get.back(),
                     child: const Icon(
                       Icons.keyboard_arrow_up_rounded,
                       color: Color(0xFF94A3B8),
