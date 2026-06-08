@@ -46,7 +46,7 @@ class SplashController extends GetxController {
 
       // 4. Phase 3: Explicitly guarantee the combined logo holds visual layout state
       // for a brief moment so it feels natural to the eye.
-      await Future.delayed(const Duration(milliseconds: 1000));
+      await Future.delayed(const Duration(milliseconds: 2500));
 
       // 5. Securely wait for our backend authentication route calculation future to finish
       final String targetedDestinationRoute = await destinationRouteFuture;
