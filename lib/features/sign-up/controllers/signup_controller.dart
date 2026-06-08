@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/controllers/current_user_controller.dart';
-import 'package:morla/core/services/auth_token_storage_service.dart';
-import 'package:morla/core/services/app_prefs_service.dart';
-import 'package:morla/core/utils/snack_helper.dart';
-import 'package:morla/features/sign-up/data/repositories/sign_up_repository.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/core/controllers/current_user_controller.dart';
+import 'package:billkit/core/services/auth_token_storage_service.dart';
+import 'package:billkit/core/services/app_prefs_service.dart';
+import 'package:billkit/core/utils/snack_helper.dart';
+import 'package:billkit/features/sign-up/data/repositories/sign_up_repository.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class SignupController extends GetxController {
   final SignUpRepository _repository;

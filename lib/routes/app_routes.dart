@@ -18,4 +18,5 @@ class AppRoutes {
   static const String paymentSetup = '/paymentSetup';
   static const String settlementMethods = '/settlementMethods';
   static const String profileEdit = '/profileEdit';
+  static const String announcements = '/announcements';
 }

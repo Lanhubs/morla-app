@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/widgets/auth_button.dart';
-import 'package:morla/core/widgets/auth_title.dart';
-import 'package:morla/core/widgets/cta_button.dart';
-import 'package:morla/core/widgets/input.dart';
-import 'package:morla/features/login/controllers/forgot_password_reset_controller.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/widgets/auth_button.dart';
+import 'package:billkit/core/widgets/auth_title.dart';
+import 'package:billkit/core/widgets/cta_button.dart';
+import 'package:billkit/core/widgets/input.dart';
+import 'package:billkit/features/login/controllers/forgot_password_reset_controller.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class ForgotPasswordResetView extends GetView<ForgotPasswordResetController> {
   const ForgotPasswordResetView({super.key});

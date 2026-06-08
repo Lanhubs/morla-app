@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:morla/core/services/app_api_client.dart';
-import 'package:morla/features/sign-up/data/models/auth_session_model.dart';
+import 'package:billkit/core/services/app_api_client.dart';
+import 'package:billkit/features/sign-up/data/models/auth_session_model.dart';
 
 class SignUpRepository {
   final AppApiClient _apiClient;

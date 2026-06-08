@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/utils/snack_helper.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/core/utils/snack_helper.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class ForgotPasswordEmailController extends GetxController {
   final emailController = TextEditingController();

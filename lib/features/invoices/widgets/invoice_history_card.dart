@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/new_invoice/data/models/new_invoice_model.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/new_invoice/data/models/new_invoice_model.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class InvoiceHistoryCard extends StatelessWidget {
   final NewInvoiceModel invoice;

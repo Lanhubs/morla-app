@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -27,24 +29,14 @@ class Header extends StatelessWidget {
         ),
         Spacer(),
         IconButton.filled(
-          onPressed: () {},
+          onPressed: () => Get.toNamed(AppRoutes.announcements),
           color: const Color(0xFF3B82F6).withValues(alpha: 0.05),
-          
           icon: HugeIcon(
             icon: HugeIcons.strokeRoundedNotification01,
             color: Colors.white,
           ),
         ),
-        IconButton.filled(
-          onPressed: () {},
-          padding: EdgeInsets.all(12),
-          color: Color(0xFF3B82F6),
-          
-          icon: HugeIcon(
-            icon: HugeIcons.strokeRoundedQrCodeScan,
-            color: Colors.white,
-          ),
-        ),
+        
       ],
     );
   }

@@ -84,7 +84,7 @@ jobs:
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: morla-ios-${{ github.sha }}
+          name: BillKit-ios-${{ github.sha }}
           path: build/ios/ipa/*.ipa
 
       # ───────────────────────────────────────────────

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/widgets/cta_button.dart';
-import 'package:morla/features/settlement_methods/data/models/payout_method_model.dart';
-import 'package:morla/features/settlement_methods/controllers/settlement_methods_controller.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/widgets/cta_button.dart';
+import 'package:billkit/features/settlement_methods/data/models/payout_method_model.dart';
+import 'package:billkit/features/settlement_methods/controllers/settlement_methods_controller.dart';
 
 class EditMethodSheet extends StatelessWidget {
   final PayoutMethodModel method;

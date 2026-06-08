@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:morla/core/widgets/cta_button.dart";
-import "package:morla/routes/app_routes.dart";
-import "package:morla/core/services/app_prefs_service.dart";
+import "package:billkit/core/widgets/cta_button.dart";
+import "package:billkit/routes/app_routes.dart";
+import "package:billkit/core/services/app_prefs_service.dart";
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});

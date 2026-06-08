@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/controllers/current_user_controller.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/settings/widgets/settings_glass_panel.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/core/controllers/current_user_controller.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/settings/widgets/settings_glass_panel.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class SettingsProfileCard extends StatelessWidget {
   const SettingsProfileCard({super.key});

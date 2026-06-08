@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/features/invoices/controllers/invoices_controller.dart';
-import 'package:morla/features/invoices/widgets/bottom_sheets/client_picker_bottom_sheet.dart';
+import 'package:billkit/features/invoices/controllers/invoices_controller.dart';
+import 'package:billkit/features/invoices/widgets/bottom_sheets/client_picker_bottom_sheet.dart';
 
 class BilledToSection extends StatelessWidget {
   final InvoicesController controller;

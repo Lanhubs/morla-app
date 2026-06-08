@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/settlement_methods/data/models/payout_method_model.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/settlement_methods/data/models/payout_method_model.dart';
 
 class CryptoWalletCard extends StatelessWidget {
   final PayoutMethodModel method;

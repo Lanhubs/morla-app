@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/services/app_api_client.dart';
-import 'package:morla/features/clients/data/models/client_model.dart';
-import 'package:morla/features/invoices/data/models/invoice_item_model.dart';
-import 'package:morla/features/new_invoice/data/models/new_invoice_model.dart';
-import 'package:morla/features/new_invoice/data/repositories/new_invoice_repository.dart';
+import 'package:billkit/core/services/app_api_client.dart';
+import 'package:billkit/features/clients/data/models/client_model.dart';
+import 'package:billkit/features/invoices/data/models/invoice_item_model.dart';
+import 'package:billkit/features/new_invoice/data/models/new_invoice_model.dart';
+import 'package:billkit/features/new_invoice/data/repositories/new_invoice_repository.dart';
 
 class InvoicesController extends GetxController {
   // Tab state

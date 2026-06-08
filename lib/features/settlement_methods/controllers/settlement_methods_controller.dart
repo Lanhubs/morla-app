@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/utils/snack_helper.dart';
-import 'package:morla/features/settlement_methods/data/models/payout_method_model.dart';
-import 'package:morla/features/settlement_methods/data/repositories/payout_methods_repository.dart';
-import 'package:morla/features/settlement_methods/view/widgets/edit_method_sheet.dart';
+import 'package:billkit/core/utils/snack_helper.dart';
+import 'package:billkit/features/settlement_methods/data/models/payout_method_model.dart';
+import 'package:billkit/features/settlement_methods/data/repositories/payout_methods_repository.dart';
+import 'package:billkit/features/settlement_methods/view/widgets/edit_method_sheet.dart';
 
 class SettlementMethodsController extends GetxController {
   final PayoutMethodsRepository _repository;

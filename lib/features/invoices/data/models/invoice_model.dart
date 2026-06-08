@@ -1,4 +1,4 @@
-import 'package:morla/features/invoices/data/models/invoice_item_model.dart';
+import 'package:billkit/features/invoices/data/models/invoice_item_model.dart';
 
 class InvoiceModel {
   final String id;

@@ -42,16 +42,17 @@ class NavItem extends StatelessWidget {
                 color: isActive ? Color(0xFF3B82F6) : Colors.white,
               ),
             ),
-            SizedBox(height: 6.0,),
-            isActive?
-            Container(
-              width: 4,
-              height: 4,
-              decoration: BoxDecoration(
-                color: isActive ? Color(0xFF3B82F6) : Colors.white,
-                shape: BoxShape.circle,
-              ),
-            ): SizedBox(height: 4.0,),
+            SizedBox(height: 6.0),
+            isActive
+                ? Container(
+                    width: 4,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: isActive ? Color(0xFF3B82F6) : Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                  )
+                : SizedBox(height: 4.0),
           ],
         ),
       ),

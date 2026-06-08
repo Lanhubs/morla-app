@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/features/new_invoice/controllers/new_invoice_controller.dart';
-import 'package:morla/features/new_invoice/widgets/invoice_preview_tab.dart';
+import 'package:billkit/features/new_invoice/controllers/new_invoice_controller.dart';
+import 'package:billkit/features/new_invoice/widgets/invoice_preview_tab.dart';
 
-import 'package:morla/features/new_invoice/widgets/new_invoice_form.dart';
-import 'package:morla/features/invoices/widgets/tabs.dart';
+import 'package:billkit/features/new_invoice/widgets/new_invoice_form.dart';
+import 'package:billkit/features/invoices/widgets/tabs.dart';
 
 class NewInvoiceView extends StatelessWidget {
   const NewInvoiceView({super.key});

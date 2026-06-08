@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/theme/app_theme.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/theme/app_theme.dart';
 import 'package:get/get.dart';
 
 // Country data model

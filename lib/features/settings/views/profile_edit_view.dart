@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:morla/core/widgets/input.dart';
-import 'package:morla/features/settings/controllers/profile_controller.dart';
+import 'package:billkit/core/widgets/input.dart';
+import 'package:billkit/features/settings/controllers/profile_controller.dart';
 
 class ProfileEditView extends StatelessWidget {
   const ProfileEditView({super.key});

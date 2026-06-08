@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/invoices/widgets/invoice_history_list.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/invoices/widgets/invoice_history_list.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class InvoicesView extends StatelessWidget {
   const InvoicesView({super.key});

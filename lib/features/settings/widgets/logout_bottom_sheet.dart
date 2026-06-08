@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/widgets/cta_button.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/widgets/cta_button.dart';
 import 'package:get/get.dart';
 
 class LogoutBottomSheet extends StatelessWidget {

@@ -112,12 +112,12 @@ StatusTag.overdue()
 
 Import all widgets at once:
 ```dart
-import 'package:morla/features/clients/widgets/index.dart';
+import 'package:BillKit/features/clients/widgets/index.dart';
 ```
 
 Or import individual widgets:
 ```dart
-import 'package:morla/features/clients/widgets/client_card.dart';
+import 'package:BillKit/features/clients/widgets/client_card.dart';
 ```
 
 ## Utilities

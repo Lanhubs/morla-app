@@ -16,8 +16,8 @@
 	<string>manual</string>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>com.yourcompany.morla</key>
-		<string>Morla App Store Profile</string>
+		<key>com.yourcompany.BillKit</key>
+		<string>BillKit App Store Profile</string>
 	</dict>
 	<key>signingCertificate</key>
 	<string>Apple Distribution</string>

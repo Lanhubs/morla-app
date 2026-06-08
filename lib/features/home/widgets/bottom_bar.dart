@@ -2,27 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:liquid_glass_easy/liquid_glass_easy.dart';
-import 'package:morla/features/dashboard/controllers/home_controller.dart';
-import 'package:morla/features/home/widgets/nav_item.dart';
+import 'package:billkit/features/dashboard/controllers/home_controller.dart';
+import 'package:billkit/features/home/widgets/nav_item.dart';
 
-LiquidGlass buildLiquidGlassBottomBar(BuildContext context, HomeController controller) {
+LiquidGlass buildLiquidGlassBottomBar(
+  BuildContext context,
+  HomeController controller,
+) {
   final double bottomPadding = MediaQuery.of(context).padding.bottom;
   return LiquidGlass(
-    width: Get.width - 32.0, // Screen width minus the left (16) and right (16) margin
+    width:
+        Get.width -
+        32.0, // Screen width minus the left (16) and right (16) margin
     height: 80.0,
     position: LiquidGlassAlignPosition(
       alignment: Alignment.bottomCenter,
       margin: EdgeInsets.only(
-        bottom: bottomPadding > 0 ? bottomPadding + 4.0 : 20.0, 
-        left: 16.0, 
-        right: 16.0
+        bottom: bottomPadding > 0 ? bottomPadding + 4.0 : 20.0,
+        left: 16.0,
+        right: 16.0,
       ),
     ),
     shape: RoundedRectangleShape(
       cornerRadius: 16.0,
-      borderType: OpticalBorder(
-        ambientIntensity: 1.2,
-      ),
+      borderType: OpticalBorder(ambientIntensity: 1.2),
     ),
     color: const Color(0xFFF8FAFC).withValues(alpha: 0.08),
     blur: const LiquidGlassBlur(sigmaX: 12, sigmaY: 12),

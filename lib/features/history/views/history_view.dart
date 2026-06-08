@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/widgets/search_input.dart';
-import 'package:morla/features/history/controllers/history_controller.dart';
-import 'package:morla/features/history/widgets/index.dart';
+import 'package:billkit/core/widgets/search_input.dart';
+import 'package:billkit/features/history/controllers/history_controller.dart';
+import 'package:billkit/features/history/widgets/index.dart';
 
 class HistoryView extends GetView<HistoryController> {
   const HistoryView({super.key});

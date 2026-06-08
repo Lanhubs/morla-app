@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/features/invoices/controllers/invoices_controller.dart';
+import 'package:billkit/features/invoices/controllers/invoices_controller.dart';
 
 class SaveTemplateToggle extends StatelessWidget {
   final InvoicesController controller;

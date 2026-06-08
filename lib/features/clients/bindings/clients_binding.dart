@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:morla/features/clients/controllers/clients_controller.dart';
+import 'package:billkit/features/clients/controllers/clients_controller.dart';
 
 class ClientsBinding extends Bindings {
   @override

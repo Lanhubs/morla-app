@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/controllers/current_user_controller.dart';
-import 'package:morla/features/sign-up/data/models/auth_user_model.dart';
-import 'package:morla/features/sign-up/data/repositories/sign_up_repository.dart';
+import 'package:billkit/core/controllers/current_user_controller.dart';
+import 'package:billkit/features/sign-up/data/models/auth_user_model.dart';
+import 'package:billkit/features/sign-up/data/repositories/sign_up_repository.dart';
 
 class ProfileController extends GetxController {
   final CurrentUserController _currentUserController = Get.find<CurrentUserController>();

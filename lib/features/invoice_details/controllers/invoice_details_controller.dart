@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
-import 'package:morla/core/utils/snack_helper.dart';
+import 'package:billkit/core/utils/snack_helper.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:morla/core/services/app_api_client.dart';
-import 'package:morla/features/new_invoice/data/models/new_invoice_model.dart';
-import 'package:morla/features/new_invoice/data/repositories/new_invoice_repository.dart';
+import 'package:billkit/core/services/app_api_client.dart';
+import 'package:billkit/features/new_invoice/data/models/new_invoice_model.dart';
+import 'package:billkit/features/new_invoice/data/repositories/new_invoice_repository.dart';
 
 class InvoiceDetailsController extends GetxController {
   final Rx<NewInvoiceModel?> invoice = Rx<NewInvoiceModel?>(null);
   final RxBool isLoading = true.obs;
+  final RxBool isDownloading = false.obs;
 
   @override
   void onInit() {
@@ -74,8 +75,7 @@ class InvoiceDetailsController extends GetxController {
   Future<void> downloadInvoice() async {
     final inv = invoice.value;
     if (inv == null || inv.id == null) return;
-    SnackHelper.showInfo("Saving invoice as PDF", title: "Download.....");
-
+    isDownloading.value = true;
     try {
       final file = await _downloadPdfFile(
         inv.id!,
@@ -89,6 +89,7 @@ class InvoiceDetailsController extends GetxController {
     } catch (e) {
       SnackHelper.showError('Failed to download invoice: $e');
     }
+    isDownloading.value = false;
   }
 
   Future<File> _downloadPdfFile(
@@ -134,10 +135,12 @@ class InvoiceDetailsController extends GetxController {
   void copyInvoiceLink() {
     final inv = invoice.value;
     if (inv == null) return;
-    final link = 'https://morla.app/invoice/${inv.id}';
+    final link = 'https://BillKit.app/invoice/${inv.id}';
     Clipboard.setData(ClipboardData(text: link));
-    SnackHelper.showInfo("Invoice link copied to clipboard",title: "Link Copied");
-   
+    SnackHelper.showInfo(
+      "Invoice link copied to clipboard",
+      title: "Link Copied",
+    );
   }
 
   String _formatDate(DateTime date) {

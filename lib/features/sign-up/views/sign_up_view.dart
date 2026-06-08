@@ -1,13 +1,13 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/widgets/auth_title.dart';
-import 'package:morla/core/widgets/auth_button.dart';
-import 'package:morla/core/widgets/cta_button.dart';
-import 'package:morla/core/widgets/input.dart';
-import 'package:morla/features/sign-up/controllers/signup_controller.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/widgets/auth_title.dart';
+import 'package:billkit/core/widgets/auth_button.dart';
+import 'package:billkit/core/widgets/cta_button.dart';
+import 'package:billkit/core/widgets/input.dart';
+import 'package:billkit/features/sign-up/controllers/signup_controller.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class SignUpView extends GetView<SignupController> {
   const SignUpView({super.key});

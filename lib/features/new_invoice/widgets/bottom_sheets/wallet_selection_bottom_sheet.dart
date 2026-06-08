@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/features/new_invoice/controllers/new_invoice_controller.dart';
-import 'package:morla/core/theme/app_colors.dart';
+import 'package:billkit/features/new_invoice/controllers/new_invoice_controller.dart';
+import 'package:billkit/core/theme/app_colors.dart';
 
 class WalletSelectionBottomSheet extends StatelessWidget {
   final NewInvoiceController controller;
@@ -97,7 +97,7 @@ class WalletSelectionBottomSheet extends StatelessWidget {
                           vertical: 16,
                         ),
                         color: isSelected
-                            ? AppColors.primaryBlue.withOpacity(0.1)
+                            ? AppColors.primaryBlue.withValues(alpha: 0.1)
                             : Colors.transparent,
                         child: Row(
                           children: [

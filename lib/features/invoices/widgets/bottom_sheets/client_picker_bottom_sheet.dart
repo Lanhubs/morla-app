@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/features/invoices/controllers/invoices_controller.dart';
+import 'package:billkit/features/invoices/controllers/invoices_controller.dart';
 import 'client_item.dart';
 
 class ClientPickerBottomSheet extends StatelessWidget {

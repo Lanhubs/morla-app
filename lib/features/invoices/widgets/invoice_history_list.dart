@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/invoices/controllers/invoices_controller.dart';
-import 'package:morla/features/invoices/data/models/invoice_model.dart';
-import 'package:morla/features/invoices/widgets/invoice_history_card.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/invoices/controllers/invoices_controller.dart';
+import 'package:billkit/features/invoices/data/models/invoice_model.dart';
+import 'package:billkit/features/invoices/widgets/invoice_history_card.dart';
 
 class InvoiceHistoryList extends GetView<InvoicesController> {
   const InvoiceHistoryList({super.key});

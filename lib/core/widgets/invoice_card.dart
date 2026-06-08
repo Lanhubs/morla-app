@@ -1,9 +1,8 @@
+import 'package:billkit/features/history/data/models/invoice_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/history/data/models/invoice_model.dart';
-
+import 'package:billkit/core/theme/app_colors.dart';
 class InvoiceCard extends StatelessWidget {
   final Invoice invoice;
   final VoidCallback? onTap;

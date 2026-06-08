@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/payment-setup/controllers/payment_setup_controller.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/payment-setup/controllers/payment_setup_controller.dart';
 import '../widgets/index.dart';
 import '../widgets/bank_account_form.dart';
 import '../widgets/wallet_address_form.dart';
@@ -17,7 +17,11 @@ class PaymentSetupView extends GetView<PaymentSetupController> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 20),
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.white,
+            size: 20,
+          ),
           onPressed: () => Get.back(),
         ),
         title: Text(
@@ -54,14 +58,20 @@ class PaymentSetupView extends GetView<PaymentSetupController> {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: AppColors.primaryBlue.withOpacity(0.05),
-                  border: Border.all(color: AppColors.primaryBlue.withOpacity(0.2)),
+                  color: AppColors.primaryBlue.withValues(alpha: 0.05),
+                  border: Border.all(
+                    color: AppColors.primaryBlue.withValues(alpha: 0.2),
+                  ),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.security, color: AppColors.primaryBlue, size: 24),
+                    const Icon(
+                      Icons.security,
+                      color: AppColors.primaryBlue,
+                      size: 24,
+                    ),
                     const SizedBox(width: 16),
                     Expanded(
                       child: Column(
@@ -79,7 +89,7 @@ class PaymentSetupView extends GetView<PaymentSetupController> {
                           Text(
                             "Funds are settled directly to your connected accounts. Termina does not hold or control your private keys or gateway credentials.",
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.7),
+                              color: Colors.white.withValues(alpha: 0.7),
                               fontSize: 12,
                               height: 1.5,
                             ),

@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
-import 'package:morla/features/clients/views/clients_view.dart';
-import 'package:morla/features/new_invoice/views/new_invoice_view.dart';
-import 'package:morla/features/new_invoice/bindings/new_invoice_binding.dart';
-import 'package:morla/features/payment-setup/binding/payment_setup_binding.dart';
-import 'package:morla/features/payment-setup/view/payment_setup_view.dart';
-import 'package:morla/features/settings/views/profile_edit_view.dart';
-import 'package:morla/features/settlement_methods/view/settlement_methods_view.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/features/clients/views/clients_view.dart';
+import 'package:billkit/features/new_invoice/views/new_invoice_view.dart';
+import 'package:billkit/features/new_invoice/bindings/new_invoice_binding.dart';
+import 'package:billkit/features/payment-setup/binding/payment_setup_binding.dart';
+import 'package:billkit/features/payment-setup/view/payment_setup_view.dart';
+import 'package:billkit/features/settings/views/profile_edit_view.dart';
+import 'package:billkit/features/settlement_methods/view/settlement_methods_view.dart';
+import 'package:billkit/features/announcements/views/announcements_view.dart';
+import 'package:billkit/routes/app_routes.dart';
 import 'imports.dart';
 
 class AppPages {
@@ -92,9 +93,10 @@ class AppPages {
       name: AppRoutes.settlementMethods,
       page: () => SettlementMethodsPage(),
     ),
+    GetPage(name: AppRoutes.profileEdit, page: () => ProfileEditView()),
     GetPage(
-      name: AppRoutes.profileEdit,
-      page: () => ProfileEditView(),
+      name: AppRoutes.announcements,
+      page: () => const AnnouncementsView(),
     ),
   ];
 }

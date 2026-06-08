@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/utils/snack_helper.dart';
-import 'package:morla/features/history/data/models/invoice_model.dart';
-import 'package:morla/features/invoices/data/models/invoice_item_model.dart';
-import 'package:morla/features/new_invoice/data/models/new_invoice_model.dart';
-import 'package:morla/features/new_invoice/data/repositories/new_invoice_repository.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/core/utils/snack_helper.dart';
+import 'package:billkit/features/history/data/models/invoice_model.dart';
+import 'package:billkit/features/invoices/data/models/invoice_item_model.dart';
+import 'package:billkit/features/new_invoice/data/models/new_invoice_model.dart';
+import 'package:billkit/features/new_invoice/data/repositories/new_invoice_repository.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class HistoryController extends GetxController {
   final TextEditingController searchController = TextEditingController();
@@ -141,39 +141,19 @@ class HistoryController extends GetxController {
   }
 
   // Navigate to invoice details
-  void viewInvoiceDetails(Invoice invoice) {
-    final detailsInvoice = NewInvoiceModel(
-      id: invoice.id,
-      invoiceNumber: invoice.invoiceNumber,
-      clientName: invoice.clientName,
-      clientId: invoice.clientId,
-      clientAddress: '',
-      clientCity: '',
-      clientEmail: '',
-      clientPhone: '',
-      invoiceDate: invoice.date,
-      dueDate: invoice.dueDate ?? invoice.date.add(const Duration(days: 30)),
-      currency: 'USD',
-      taxRate: 0,
-      paymentTerms: 'Net 30',
-      memo: '',
-      subtotal: invoice.amount,
-      taxAmount: 0,
-      totalAmount: invoice.amount,
-      status: invoice.status,
-      items: [
-        InvoiceItem(
-          description: invoice.description.isEmpty
-              ? 'Invoice Service'
-              : invoice.description,
-          quantity: 1,
-          price: invoice.amount,
-          taxPercent: 0,
-        ),
-      ],
-    );
-
-    Get.toNamed(AppRoutes.invoiceDetails, arguments: detailsInvoice);
+  // Navigate to invoice details fetched from backend
+  Future<void> viewInvoiceDetails(Invoice invoice) async {
+    final repo = Get.put(NewInvoiceRepository());
+    try {
+      final detailsInvoice = await repo.getInvoice(invoice.id);
+      if (detailsInvoice != null) {
+        Get.toNamed(AppRoutes.invoiceDetails, arguments: detailsInvoice);
+      } else {
+        SnackHelper.showError('Invoice not found');
+      }
+    } catch (e) {
+      SnackHelper.showError('Failed to fetch invoice details: $e');
+    }
   }
 
   // Format currency

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/services/app_api_client.dart';
-import 'package:morla/features/settlement_methods/data/models/payout_method_model.dart';
+import 'package:billkit/core/services/app_api_client.dart';
+import 'package:billkit/features/settlement_methods/data/models/payout_method_model.dart';
 
 class PayoutMethodsRepository {
   final AppApiClient _apiClient;

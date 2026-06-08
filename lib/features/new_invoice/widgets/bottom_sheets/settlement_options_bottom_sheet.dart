@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/new_invoice/controllers/new_invoice_controller.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/new_invoice/controllers/new_invoice_controller.dart';
 
 import 'settlement_options/merchant_card.dart';
 import 'settlement_options/settlement_tabs.dart';
 import 'settlement_options/crypto_pane.dart';
 import 'settlement_options/fiat_pane.dart';
 import 'settlement_options/verification_section.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class SettlementOptionsPage extends StatelessWidget {
   final NewInvoiceController controller;

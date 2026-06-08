@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/widgets/cta_button.dart';
-import 'package:morla/features/new_invoice/controllers/new_invoice_controller.dart';
+import 'package:billkit/core/widgets/cta_button.dart';
+import 'package:billkit/features/new_invoice/controllers/new_invoice_controller.dart';
 
 class InvoicePreviewTab extends StatelessWidget {
   final NewInvoiceController controller;

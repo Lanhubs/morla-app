@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/services/app_api_client.dart';
-import 'package:morla/features/new_invoice/data/models/new_invoice_model.dart';
+import 'package:billkit/core/services/app_api_client.dart';
+import 'package:billkit/features/new_invoice/data/models/new_invoice_model.dart';
 
 class NewInvoiceRepository {
   final AppApiClient _apiClient;

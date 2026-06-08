@@ -9,49 +9,55 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(DashboardController());
+    final controller = Get.isRegistered<DashboardController>()
+        ? Get.find<DashboardController>()
+        : Get.put(DashboardController());
 
     return Scaffold(
       backgroundColor: const Color(0xFF0B0F19),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Obx(
-            () => Column(
+        child: RefreshIndicator(
+          onRefresh: () => controller.refreshDashboardStats(),
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
               children: [
-                Header(),
-
-                SizedBox(height: 32),
+                Header(), // Static structural widget -> Never flashes now!
+                const SizedBox(height: 32),
+                
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     spacing: 16,
                     children: [
-                      MetricCard(
+                      // Localized Obx just for the value change strings
+                      Obx(() => MetricCard(
                         title: "Total Invoices",
                         value: controller.totalInvoices.value.toString(),
                         icon: HugeIcons.strokeRoundedInvoice03,
-                      ),
-                      MetricCard(
+                      )),
+                      Obx(() => MetricCard(
                         title: "Total Paid",
-                        value:
-                            "\$ ${controller.totalPaid.value.toStringAsFixed(2)}",
+                        value: controller.formatCurrency(controller.totalPaid.value),
                         icon: HugeIcons.strokeRoundedMoneyBag02,
-                      ),
-                      MetricCard(
+                      )),
+                      Obx(() => MetricCard(
                         title: "Total Unpaid",
-                        value:
-                            "\$ ${controller.totalUnpaid.value.toStringAsFixed(2)}",
+                        value: controller.formatCurrency(controller.totalUnpaid.value),
                         status: "unpaid",
                         icon: HugeIcons.strokeRoundedMoneyBag02,
-                      ),
+                      )),
                     ],
                   ),
                 ),
-                SizedBox(height: 25),
-                ActionButtons(),
-                SizedBox(height: 20),
-                RecentInvoices(),
+                
+                const SizedBox(height: 25),
+                ActionButtons(), // Static operational widget -> Never flashes now!
+                const SizedBox(height: 20),
+                
+                // Isolate list updates completely inside its own reactive wrapper
+                RecentInvoices(controller: controller),
               ],
             ),
           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/settings/widgets/settings_toggle_switch.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/settings/widgets/settings_toggle_switch.dart';
 
 class SettingsToggleTile extends StatelessWidget {
   final IconData? icon;

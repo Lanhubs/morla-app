@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/theme/app_theme.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/theme/app_theme.dart';
 
 class PinInput extends StatelessWidget {
   final int length;

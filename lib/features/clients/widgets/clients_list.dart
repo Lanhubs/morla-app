@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:morla/features/clients/data/models/client_model.dart';
+import 'package:billkit/features/clients/data/models/client_model.dart';
 import 'client_card.dart';
 
 class ClientsList extends StatelessWidget {

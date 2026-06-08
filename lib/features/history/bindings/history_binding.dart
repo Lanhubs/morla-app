@@ -1,5 +1,5 @@
 import "package:get/get.dart";
-import "package:morla/features/history/controllers/history_controller.dart";
+import "package:billkit/features/history/controllers/history_controller.dart";
 
 class HistoryBinding extends Bindings {
   @override

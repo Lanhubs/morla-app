@@ -6,7 +6,7 @@ class SnackHelper {
     Get.snackbar(
       title ?? 'Success',
       message,
-      backgroundColor: Colors.green.withValues(alpha: .1),
+      backgroundColor: Colors.green,
       colorText: Colors.green,
       borderColor: Colors.green,
       borderWidth: 1,
@@ -20,7 +20,7 @@ class SnackHelper {
     Get.snackbar(
       title ?? 'Error',
       message,
-      backgroundColor: Colors.red.withValues(alpha: .1),
+      backgroundColor: Colors.red,
       colorText: Colors.red,
       borderColor: Colors.red,
       borderWidth: 1,
@@ -34,7 +34,7 @@ class SnackHelper {
     Get.snackbar(
       title ?? 'Info',
       message,
-      backgroundColor: Colors.blue.withValues(alpha: .1),
+      backgroundColor: Colors.blue,
       colorText: Colors.blue,
       borderColor: Colors.blue,
       borderWidth: 1,
@@ -47,7 +47,7 @@ class SnackHelper {
     Get.snackbar(
       title ?? 'Info',
       message,
-      backgroundColor: Colors.orange.withValues(alpha: .1),
+      backgroundColor: Colors.orange,
       colorText: Colors.orange,
       borderColor: Colors.orange,
       borderWidth: 1,

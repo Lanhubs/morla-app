@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/routes/app_routes.dart';
+import 'package:billkit/features/dashboard/controllers/home_controller.dart';
 
 class ActionButtons extends StatelessWidget {
   const ActionButtons({super.key});
@@ -55,7 +56,11 @@ class ActionButtons extends StatelessWidget {
             ),
 
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                if (Get.isRegistered<HomeController>()) {
+                  Get.find<HomeController>().changeTab(2);
+                }
+              },
               child: SizedBox(
                 child: Column(
                   spacing: 9,

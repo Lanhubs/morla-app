@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/utils/snack_helper.dart';
-import 'package:morla/features/invoice_details/controllers/invoice_details_controller.dart';
-import 'package:morla/features/settlement_methods/data/models/payout_method_model.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/utils/snack_helper.dart';
+import 'package:billkit/features/invoice_details/controllers/invoice_details_controller.dart';
+import 'package:billkit/features/settlement_methods/data/models/payout_method_model.dart';
 import 'qr_pattern_painter.dart';
 
 class SettlementDetailsSection extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:morla/features/clients/data/models/client_model.dart';
-import 'package:morla/features/invoices/controllers/invoices_controller.dart';
+import 'package:billkit/features/clients/data/models/client_model.dart';
+import 'package:billkit/features/invoices/controllers/invoices_controller.dart';
 import 'package:get/get.dart';
 
 class ClientItem extends StatelessWidget {

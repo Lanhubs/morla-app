@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/payment-setup/controllers/payment_setup_controller.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/payment-setup/controllers/payment_setup_controller.dart';
 
 class ChainSelectorBottomSheet extends StatelessWidget {
   final PaymentSetupController controller;

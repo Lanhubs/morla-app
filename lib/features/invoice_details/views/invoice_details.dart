@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/invoice_details/controllers/invoice_details_controller.dart';
-import 'package:morla/features/invoice_details/widgets/automated_pings_section.dart';
-import 'package:morla/features/invoice_details/widgets/invoice_details_header.dart';
-import 'package:morla/features/invoice_details/widgets/invoice_info_grid.dart';
-import 'package:morla/features/invoice_details/widgets/service_itemization_section.dart';
-import 'package:morla/features/invoice_details/widgets/settlement_details_section.dart';
-import 'package:morla/features/invoice_details/widgets/share_invoice_button.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/invoice_details/controllers/invoice_details_controller.dart';
+import 'package:billkit/features/invoice_details/widgets/automated_pings_section.dart';
+import 'package:billkit/features/invoice_details/widgets/invoice_details_header.dart';
+import 'package:billkit/features/invoice_details/widgets/invoice_info_grid.dart';
+import 'package:billkit/features/invoice_details/widgets/service_itemization_section.dart';
+import 'package:billkit/features/invoice_details/widgets/settlement_details_section.dart';
+import 'package:billkit/features/invoice_details/widgets/share_invoice_button.dart';
 
 class InvoiceDetailsView extends StatelessWidget {
   const InvoiceDetailsView({super.key});

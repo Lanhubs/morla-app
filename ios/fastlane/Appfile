@@ -1,5 +1,5 @@
 # App Identifier Configuration
-app_identifier(ENV["APP_BUNDLE_ID"] || "com.yourcompany.morla")
+app_identifier(ENV["APP_BUNDLE_ID"] || "com.yourcompany.BillKit")
 
 # Apple ID for App Store Connect
 apple_id(ENV["APPLE_ID"] || "your-apple-id@example.com")

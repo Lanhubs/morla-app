@@ -105,7 +105,7 @@ read -r team_id
 echo "TEAM_ID: $team_id"
 echo ""
 
-echo "Please enter your Bundle Identifier (e.g., com.yourcompany.morla):"
+echo "Please enter your Bundle Identifier (e.g., com.yourcompany.BillKit):"
 read -r bundle_id
 echo "APP_BUNDLE_ID: $bundle_id"
 echo ""

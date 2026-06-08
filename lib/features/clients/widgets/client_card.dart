@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:morla/features/clients/data/models/client_model.dart';
+import 'package:billkit/features/clients/data/models/client_model.dart';
 import 'action_button.dart';
 import 'avatar_fallback.dart';
 import 'glass_card.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:morla/core/theme/app_colors.dart';
+import 'package:billkit/core/theme/app_colors.dart';
 
 class FilterDropdown extends StatelessWidget {
   final String value;

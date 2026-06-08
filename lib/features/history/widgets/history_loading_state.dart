@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:morla/core/theme/app_colors.dart';
+import 'package:billkit/core/theme/app_colors.dart';
 
 class HistoryLoadingState extends StatelessWidget {
   final Color? color;

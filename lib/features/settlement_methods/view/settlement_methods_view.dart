@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/settlement_methods/controllers/settlement_methods_controller.dart';
-import 'package:morla/features/settlement_methods/view/widgets/fiat_account_card.dart';
-import 'package:morla/features/settlement_methods/view/widgets/crypto_wallet_card.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/settlement_methods/controllers/settlement_methods_controller.dart';
+import 'package:billkit/features/settlement_methods/view/widgets/fiat_account_card.dart';
+import 'package:billkit/features/settlement_methods/view/widgets/crypto_wallet_card.dart';
 
 class SettlementMethodsPage extends StatelessWidget {
   final SettlementMethodsController controller = Get.put(
@@ -19,6 +19,11 @@ class SettlementMethodsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: Icon(Icons.arrow_back_ios),
+          color: Colors.white,
+        ),
         title: const Text(
           'Infrastructure',
           style: TextStyle(
@@ -78,7 +83,7 @@ class _FiatRailMapping extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.04),
+        color: Color(0xFF1E293B),
         border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
         borderRadius: BorderRadius.circular(12),
       ),
@@ -174,7 +179,8 @@ class _MultiChainWalletMapping extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.04),
+        color: Color(0xFF1E293B),
+
         border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
         borderRadius: BorderRadius.circular(12),
       ),

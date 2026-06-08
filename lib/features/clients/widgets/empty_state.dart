@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:morla/core/theme/app_colors.dart';
+import 'package:billkit/core/theme/app_colors.dart';
 
 class ClientsEmptyState extends StatelessWidget {
   final String message;

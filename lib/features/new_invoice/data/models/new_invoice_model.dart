@@ -1,5 +1,5 @@
-import 'package:morla/features/invoices/data/models/invoice_item_model.dart';
-import 'package:morla/features/settlement_methods/data/models/payout_method_model.dart';
+import 'package:billkit/features/invoices/data/models/invoice_item_model.dart';
+import 'package:billkit/features/settlement_methods/data/models/payout_method_model.dart';
 
 
 class NewInvoiceModel {

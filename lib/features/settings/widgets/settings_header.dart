@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:morla/core/theme/app_colors.dart';
+import 'package:billkit/core/theme/app_colors.dart';
 
 class SettingsHeader extends StatelessWidget {
   const SettingsHeader({super.key});
@@ -43,7 +43,7 @@ class SettingsHeader extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               const Text(
-                'MORLA',
+                'BillKit',
                 style: TextStyle(
                   fontFamily: 'JetBrains Mono',
                   fontSize: 10,

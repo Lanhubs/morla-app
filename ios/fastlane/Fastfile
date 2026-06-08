@@ -1,4 +1,4 @@
-# Fastfile for Morla iOS App
+# Fastfile for BillKit iOS App
 
 default_platform(:ios)
 

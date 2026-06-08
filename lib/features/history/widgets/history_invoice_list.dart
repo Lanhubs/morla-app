@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:morla/features/history/data/models/invoice_model.dart';
+import 'package:billkit/features/history/data/models/invoice_model.dart';
 import '../../../core/widgets/invoice_card.dart';
 
 class HistoryInvoiceList extends StatelessWidget {

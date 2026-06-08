@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/utils/snack_helper.dart';
-import 'package:morla/routes/app_routes.dart';
-import 'package:morla/features/clients/controllers/clients_controller.dart';
-import 'package:morla/features/clients/widgets/index.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/utils/snack_helper.dart';
+import 'package:billkit/routes/app_routes.dart';
+import 'package:billkit/features/clients/controllers/clients_controller.dart';
+import 'package:billkit/features/clients/widgets/index.dart';
 
 class ClientsView extends GetView<ClientsController> {
   const ClientsView({super.key});

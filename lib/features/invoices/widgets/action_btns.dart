@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:morla/core/widgets/cta_button.dart';
+import 'package:billkit/core/widgets/cta_button.dart';
 import 'package:get/get.dart';
 
 class ActionBtns extends StatelessWidget {

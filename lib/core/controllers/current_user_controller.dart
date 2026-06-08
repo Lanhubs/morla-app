@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:morla/core/services/auth_token_storage_service.dart';
-import 'package:morla/features/sign-up/data/models/auth_user_model.dart';
-import 'package:morla/features/sign-up/data/repositories/sign_up_repository.dart';
+import 'package:billkit/core/services/auth_token_storage_service.dart';
+import 'package:billkit/features/sign-up/data/models/auth_user_model.dart';
+import 'package:billkit/features/sign-up/data/repositories/sign_up_repository.dart';
 
 class CurrentUserController extends GetxController {
   final SignUpRepository _repository;

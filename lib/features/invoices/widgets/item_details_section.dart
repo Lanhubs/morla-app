@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/features/invoices/controllers/invoices_controller.dart';
-import 'package:morla/features/invoices/data/models/invoice_item_model.dart';
+import 'package:billkit/features/invoices/controllers/invoices_controller.dart';
+import 'package:billkit/features/invoices/data/models/invoice_item_model.dart';
 import 'add_item_bottom_sheet.dart';
 
 class ItemDetailsSection extends StatelessWidget {

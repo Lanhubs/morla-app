@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/widgets/invoice_input.dart';
-import 'package:morla/features/invoices/controllers/invoices_controller.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/widgets/invoice_input.dart';
+import 'package:billkit/features/invoices/controllers/invoices_controller.dart';
 
 class AddItemForm extends StatelessWidget {
   final InvoicesController controller;

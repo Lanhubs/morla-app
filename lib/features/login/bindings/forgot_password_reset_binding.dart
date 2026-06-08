@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:morla/features/login/controllers/forgot_password_reset_controller.dart';
+import 'package:billkit/features/login/controllers/forgot_password_reset_controller.dart';
 
 class ForgotPasswordResetBinding extends Bindings {
   @override

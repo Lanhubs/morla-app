@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
-import 'package:morla/core/utils/snack_helper.dart';
-import 'package:morla/features/invoices/controllers/invoices_controller.dart';
-import 'package:morla/features/new_invoice/data/models/new_invoice_model.dart';
-import 'package:morla/features/new_invoice/data/repositories/new_invoice_repository.dart';
-import 'package:morla/features/new_invoice/widgets/bottom_sheets/settlement_options_bottom_sheet.dart'
+import 'package:billkit/core/utils/snack_helper.dart';
+import 'package:billkit/features/invoices/controllers/invoices_controller.dart';
+import 'package:billkit/features/new_invoice/data/models/new_invoice_model.dart';
+import 'package:billkit/features/new_invoice/data/repositories/new_invoice_repository.dart';
+import 'package:billkit/features/new_invoice/widgets/bottom_sheets/settlement_options_bottom_sheet.dart'
     as import_sheet;
-import 'package:morla/features/settlement_methods/data/repositories/payout_methods_repository.dart';
+import 'package:billkit/features/settlement_methods/data/repositories/payout_methods_repository.dart';
 
 class NewInvoiceController extends InvoicesController {
   final NewInvoiceRepository _repository;

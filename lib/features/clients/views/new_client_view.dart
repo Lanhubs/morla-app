@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:morla/features/clients/widgets/new_client/widgets.dart';
+import 'package:billkit/features/clients/widgets/new_client/widgets.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../controllers/new_client_controller.dart';
 

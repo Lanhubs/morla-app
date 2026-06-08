@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/controllers/current_user_controller.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/features/settings/controllers/settings_controller.dart';
+import 'package:billkit/core/controllers/current_user_controller.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/features/settings/controllers/settings_controller.dart';
 import '../widgets/index.dart';
-import 'package:morla/routes/app_routes.dart';
+import 'package:billkit/routes/app_routes.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
@@ -66,27 +66,50 @@ class SettingsView extends StatelessWidget {
                     // PAYOUT CHANNELS
                     const SettingsSectionHeader(title: 'PAYOUT CHANNELS'),
                     SettingsGlassPanel(
-                      child: Column(
-                        children: [
-                          SettingsActionTile(
-                            icon: Icons.account_balance_wallet,
-                            title: 'Primary Wallet',
-                            subtitle: '0x71C...8e42',
-                            showChevron: true,
-                            onTap: () {},
-                          ),
-                          SettingsActionTile(
-                            icon: Icons.account_balance,
-                            title: 'Bank Rails',
-                            subtitle: 'Active',
-                            showChevron: true,
-                            onTap: () {},
-                          ),
-                          PaymentChannelBtn(
-                            onTap: () => Get.toNamed(AppRoutes.paymentSetup),
-                          ),
-                        ],
-                      ),
+                      child: Obx(() {
+                        if (controller.isLoadingPayouts.value) {
+                          return const Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Center(child: CircularProgressIndicator()),
+                          );
+                        }
+
+                        return Column(
+                          children: [
+                            ...controller.payoutMethods.map((method) {
+                              String subtitle = '';
+                              IconData icon = Icons.payment;
+
+                              if (method.methodType == 'crypto') {
+                                icon = Icons.account_balance_wallet;
+                                final addr = method.walletAddress ?? '';
+                                subtitle = addr.length > 10
+                                    ? '${addr.substring(0, 6)}...${addr.substring(addr.length - 4)}'
+                                    : addr;
+                              } else if (method.methodType == 'bank') {
+                                icon = Icons.account_balance;
+                                final accNum = method.accountNumber ?? '';
+                                subtitle = '${method.bankName ?? 'Bank'} •••${accNum.length >= 4 ? accNum.substring(accNum.length - 4) : accNum}';
+                              }
+
+                              if (method.isDefault) {
+                                subtitle += ' (Default)';
+                              }
+
+                              return SettingsActionTile(
+                                icon: icon,
+                                title: method.label,
+                                subtitle: subtitle,
+                                showChevron: true,
+                                onTap: () => Get.toNamed(AppRoutes.settlementMethods),
+                              );
+                            }),
+                            PaymentChannelBtn(
+                              onTap: () => Get.toNamed(AppRoutes.paymentSetup),
+                            ),
+                          ],
+                        );
+                      }),
                     ),
                     const SizedBox(height: 24),
 

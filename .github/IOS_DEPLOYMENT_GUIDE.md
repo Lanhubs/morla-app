@@ -16,10 +16,10 @@ Before setting up the workflow, you need:
 2. Go to "My Apps" → Click the "+" button → "New App"
 3. Fill in the required information:
    - **Platform**: iOS
-   - **Name**: Morla
+   - **Name**: BillKit
    - **Primary Language**: English
-   - **Bundle ID**: Select your bundle ID (e.g., `com.yourcompany.morla`)
-   - **SKU**: A unique identifier (e.g., `morla-ios-001`)
+   - **Bundle ID**: Select your bundle ID (e.g., `com.yourcompany.BillKit`)
+   - **SKU**: A unique identifier (e.g., `BillKit-ios-001`)
 4. Complete app information, screenshots, and privacy details
 
 ## Step 2: Generate App Store Connect API Key
@@ -110,7 +110,7 @@ Add the following secrets:
 ### Optional Secrets:
 
 7. **API_BASE_URL**
-   - Your production API URL (e.g., `https://api.morla.com`)
+   - Your production API URL (e.g., `https://api.BillKit.com`)
 
 8. **SENTRY_DSN** (if using Sentry)
    - Your Sentry DSN for crash reporting
@@ -128,8 +128,8 @@ Add the following secrets:
 
 <key>provisioningProfiles</key>
 <dict>
-    <key>com.yourcompany.morla</key> <!-- Replace with your Bundle ID -->
-    <string>Morla App Store Profile</string> <!-- Replace with your profile name -->
+    <key>com.yourcompany.BillKit</key> <!-- Replace with your Bundle ID -->
+    <string>BillKit App Store Profile</string> <!-- Replace with your profile name -->
 </dict>
 ```
 
@@ -296,4 +296,4 @@ security find-identity -v -p codesigning
 ---
 
 **Last Updated**: December 2024
-**Maintained By**: Morla Development Team
+**Maintained By**: BillKit Development Team

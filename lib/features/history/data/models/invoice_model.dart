@@ -38,16 +38,16 @@ class Invoice {
   factory Invoice.fromJson(Map<String, dynamic> json) {
     return Invoice(
       id: json['id'] ?? '',
-      invoiceNumber: json['invoiceNumber'] ?? '',
-      clientName: json['clientName'] ?? '',
-      clientId: json['clientId'] ?? '',
-      amount: (json['amount'] as num?)?.toDouble() ?? 0.0,
+      invoiceNumber: json['invoiceNumber'] ?? json['invoice_number'] ?? '',
+      clientName: json['clientName'] ?? json['client_name'] ?? '',
+      clientId: json['clientId'] ?? json['client_id'] ?? '',
+      amount: double.tryParse((json['amount'] ?? json['total_amount'] ?? '0').toString()) ?? 0.0,
       status: json['status'] ?? 'DRAFT',
-      date: json['date'] != null
-          ? DateTime.tryParse(json['date'] as String) ?? DateTime.now()
+      date: (json['date'] ?? json['invoice_date']) != null
+          ? DateTime.tryParse((json['date'] ?? json['invoice_date']) as String) ?? DateTime.now()
           : DateTime.now(),
-      dueDate: json['dueDate'] != null
-          ? DateTime.tryParse(json['dueDate'] as String)
+      dueDate: (json['dueDate'] ?? json['due_date']) != null
+          ? DateTime.tryParse((json['dueDate'] ?? json['due_date']) as String)
           : null,
       description: json['description'] ?? '',
     );

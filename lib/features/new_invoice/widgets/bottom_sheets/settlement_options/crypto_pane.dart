@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morla/core/theme/app_colors.dart';
-import 'package:morla/core/widgets/cta_button.dart';
+import 'package:billkit/core/theme/app_colors.dart';
+import 'package:billkit/core/widgets/cta_button.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:morla/features/new_invoice/controllers/new_invoice_controller.dart';
-import 'package:morla/features/new_invoice/widgets/bottom_sheets/wallet_selection_bottom_sheet.dart';
+import 'package:billkit/features/new_invoice/controllers/new_invoice_controller.dart';
+import 'package:billkit/features/new_invoice/widgets/bottom_sheets/wallet_selection_bottom_sheet.dart';
 
 class CryptoPane extends StatelessWidget {
   final NewInvoiceController controller;

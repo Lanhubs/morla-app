@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
-import 'package:morla/core/services/app_api_client.dart';
-import 'package:morla/core/utils/snack_helper.dart';
-import 'package:morla/features/clients/data/models/client_model.dart';
+import 'package:billkit/core/services/app_api_client.dart';
+import 'package:billkit/core/utils/snack_helper.dart';
+import 'package:billkit/features/clients/data/models/client_model.dart';
 
 class ClientsController extends GetxController {
   final AppApiClient _apiClient;
